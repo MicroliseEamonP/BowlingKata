@@ -33,6 +33,14 @@ namespace ClassLibrary
                         bowlTwo = random.Next(0, 10 - bowlOne);
                         Console.WriteLine($"{player.Name}'s bowl one: {bowlTwo}.");
                         player.IsPrevFrameStrike = false; // Reset for next turn.
+                        if(bowlOne+bowlTwo==10)
+                        {
+                            player.IsPrevFrameSpare = true;
+                        }
+                        else
+                        {
+                            player.IsPrevFrameSpare = false;
+                        }
                     }
                     else
                     {

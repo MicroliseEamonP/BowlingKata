@@ -32,16 +32,37 @@ namespace ClassLibrary
                     {
                         bowlTwo = random.Next(0, 10 - bowlOne);
                         Console.WriteLine($"{player.Name}'s bowl one: {bowlTwo}.");
+                        player.IsPrevFrameStrike = false; // Reset for next turn.
+                    }
+                    else
+                    {
+                        player.IsPrevFrameStrike = true;
                     }
 
                     player.Frames[turn] = new Frame
                     {
-                       BowlOne = bowlOne,
-                       BowlTwo = bowlTwo
+                        BowlOne = bowlOne,
+                        BowlTwo = bowlTwo,
+                        TotalScore = GetScore(player, bowlOne, bowlTwo)
                     };
-                    
+                    player.UpdateScore();
                 }
             }
+        }
+
+        private int GetScore(Player player, int bowlOne, int bowlTwo)
+        {
+            if (player.IsPrevFrameStrike)
+            {
+                bowlOne = bowlOne * 2;
+                bowlTwo = bowlTwo * 2;
+            }
+            if(player.IsPrevFrameSpare)
+            {
+                bowlOne = bowlOne * 2;
+            }
+            return bowlOne + bowlTwo;
+ 
         }
     }
 }

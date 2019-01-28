@@ -9,6 +9,8 @@ namespace ClassLibrary
         public string Name { get; set; }
         public int CurrentScore { get; set; }
         public Frame[] Frames { get; set; }
+        public bool IsPrevFrameStrike { get; set; }
+        public bool IsPrevFrameSpare { get; set; }
 
         public Player()
         {
@@ -17,6 +19,14 @@ namespace ClassLibrary
         public Player(string name)
         {
             Name = name;
+        }
+
+        public void UpdateScore()
+        {
+            foreach(var frame in Frames)
+            {
+                CurrentScore += frame.TotalScore;
+            };
         }
     }
 }

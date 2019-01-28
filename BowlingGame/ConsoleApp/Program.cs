@@ -23,12 +23,10 @@ namespace ConsoleApp
                 players.Add(new Player(item));
             }
 
-            Console.WriteLine("Player 1 turn...");
 
-            Random random = new Random();
-            var randomNumber = random.Next();
-            Console.WriteLine("Player 1 dcore {0}", randomNumber);
+            var turnManager = new TurnManager(players);
 
+            
 
             Console.ReadLine();
         }

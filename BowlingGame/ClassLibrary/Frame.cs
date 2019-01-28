@@ -7,6 +7,11 @@ namespace ClassLibrary
     public class Frame
     {
         private bool IsStrike;
-        public int PinsKnockedDown;
+        public int TotalScore;
+        public int Bonus;
+
+        public int BowlOne;
+        public int BowlTwo;
+        public int BowlThree;
     }
 }
